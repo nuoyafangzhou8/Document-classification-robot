@@ -4,14 +4,14 @@
 import os
 import shutil
 import pathlib
-from document-classify-default import fileclassifydefault
+from document_classify_default import fileclassifydefault # 从document_classify_default 模块中引用fileclassifydefault函数
 # 定义源文件路径和目标文件夹
 
 # file_target1=r'F:\targetforclassify\Document'
 # file_target2=r'F:\targetforclassify\Picture'
 # file_target3=r'F:\targetforclassify\Code'
 # file_target4=r'F:\targetforclassify\Others'
-# list_do=['.pdf','.docx','.doc','.xlsx','.txt','.xls','.xml']
+# list_do=['.pdf','.docx','.ddoc','.xlsx','.txt','.xls','.xml']
 # list_pi=['.jpg','.png','.gif']
 # list_co=['.py','.js','.html']
 # 定义后缀及文件名字符串
@@ -36,9 +36,9 @@ def fileclassify(file_source):
             shutil.move(src_path, file_target4)
 
 
-# 输入文件夹定义主函数
+# 定义主函数输入分类规则
 if __name__ == '__main__':
-    try:
+    try: #增加try-except异常处理，增加系统健壮性:
         file_source=input('请输入需要整理的文件路径：')
         file_target1=input('请输入第一类文件的存放路径：')
         list_do=input('请输入第一类文件的后缀（以列表形式输入）：')
@@ -49,6 +49,7 @@ if __name__ == '__main__':
         file_target4 = input('请输入其它文件的存放路径：')
         fileclassify(file_source)
     except FileNotFoundError:
+        print('输入有误，采用默认方式分类')
         fileclassifydefault()
 
 
